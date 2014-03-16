@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+/*************************************************************
+ * This script is developed by Arturs Sosins aka ar2rsawseen, http://webcodingeasy.com
+ * Feel free to distribute and modify code, but keep reference to its creator
+ *
+ * Lightning draws a randomly generated lightning with glow effect on html page
+ * from x and y coordinates, to other x and y coordinates.
+ *
+ * For more information, examples and online documentation visit: 
+ * http://webcodingeasy.com/JS-classes/Javascript-lightning-effect
+**************************************************************/
+-->
+<html>
+<head>
+</head>
+<body style='background-color: #000;'>
+<h1 style='color: #fff; text-align: center;'>Simple lightning (refresh page)</h1>
+<script type="text/javascript" src="./lightning.packed.js" ></script>
+<script type="text/javascript">
+var lt = new lightning({
+	detail: 1,
+	displace: 500,
+	glowWidth: 20,
+	boltWidth: 3,
+	boltColor: "#ffff88",
+	glow: true,
+	glowColor: "#ffffff",
+	glowAlpha: 0.1
+});
+lt.show(0, 0, 500, 500);
+</script>
+</body>
+</html>

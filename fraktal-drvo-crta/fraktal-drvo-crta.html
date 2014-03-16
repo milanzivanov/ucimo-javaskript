@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+        <title>Fractal Tree</title>
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/south-street/jquery-ui.css" />
+        <link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+        <h1>Fractal Tree Generator</h1>
+        <h2>Press Draw to get a different tree each time!</h2>
+        <canvas id="treeCanvas"
+                width='700'
+                height='500'>
+        </canvas>
+        <br>
+        <div class="slider_tag">X Scale: <span id="sx">10.0</span></div>
+        <div class="p_slider" id="sx_slider"></div>
+        <div class="slider_tag">Y Scale: <span id="sy">10.0</span></div>
+        <div class="p_slider" id="sy_slider"></div>
+        <div class="slider_tag">Angle Amplitude: <span id="aa">50</span></div>
+        <div class="p_slider" id="aa_slider"></div>
+        <div class="slider_tag">Grow Depth: <span  id="dp">9</span></div>
+        <div class="p_slider" id="dp_slider"></div>
+        <br>
+        <button id="draw">Draw</div>
+        <button id="clear">Clear</div>
+    </body>
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+    <script src='script.js'></script>
+</html>

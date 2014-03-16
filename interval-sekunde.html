@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>elapsed</title>
+<script>
+function init() {
+setInterval(brojac,1000);
+}
+
+function brojac() {
+document.f.secs.value = 1 + Number(document.f.secs.value);
+}
+</script>
+</head>
+<body onLoad="init();">
+<form name="f">
+<input type="text" name="secs" value="0"/>
+</form>
+</body>
+</html>

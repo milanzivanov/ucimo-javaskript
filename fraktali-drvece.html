@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+  body {
+	margin: 0px;
+	padding: 0px;
+  }
+</style>
+</head><body>
+
+<canvas id="myCanvas" width="578" height="500"></canvas>
+
+<script>
+//mnogo spor algoritam
+canvas = document.getElementById('myCanvas');
+platno = canvas.getContext('2d');
+
+function crtaGrane(pocetniX, pocetniY, shirinaStabla, nivo) {
+	//manji nivo, vece drvo
+    if (nivo < 12) {
+        var menjajX = 100 / (nivo + 1);
+        var menjajY = 200 / (nivo + 1);
+
+        var gornjiDesniX = pocetniX + Math.random() * menjajX;
+        var gornjiDesniY = pocetniY - Math.random() * menjajY;
+
+        var gornjiLeviX = pocetniX - Math.random() * menjajX;
+        var gornjiLeviY = pocetniY - Math.random() * menjajY;
+
+        // crta desnu rachvu
+        platno.beginPath();
+        platno.moveTo(pocetniX + shirinaStabla / 4, pocetniY);
+        platno.quadraticCurveTo(pocetniX + shirinaStabla / 4, pocetniY - shirinaStabla, gornjiDesniX, gornjiDesniY);
+        platno.lineWidth = shirinaStabla;
+        platno.lineCap = 'round';
+        platno.stroke();
+
+        // crta levu rachvu
+        platno.beginPath();
+        platno.moveTo(pocetniX - shirinaStabla / 4, pocetniY);
+        platno.quadraticCurveTo(pocetniX - shirinaStabla / 4, pocetniY - shirinaStabla, gornjiLeviX, gornjiLeviY);
+        platno.lineWidth = shirinaStabla;
+        platno.lineCap = 'round';
+        platno.stroke();
+
+        crtaGrane(gornjiDesniX, gornjiDesniY, shirinaStabla * 0.7, nivo + 1);
+        crtaGrane(gornjiLeviX, gornjiLeviY, shirinaStabla * 0.7, nivo + 1);
+    }
+}
+
+crtaGrane(canvas.width / 2, canvas.height, 50, 0);
+
+</script>
+</body>
+</html>

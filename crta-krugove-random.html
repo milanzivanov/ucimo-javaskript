@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+<head>
+  <title>Crtanje na platnu</title>
+  <meta charset = "UTF-8" />
+  <style type = "text/css">
+  </style>
+<script type = "text/javascript">
+
+function draw(){
+	var platno = document.getElementById('platno').getContext('2d');
+	document.getElementById("platno").style.backgroundColor="lightblue";
+	var paleta = ["#701206", "ff0000", "#B36330", "#FFC861", "#96FFC9", "#276344", "orange", "yellow"];
+
+	for(var i = 0; i < 100; i++) {
+		//platno.arc(x, y, poluprecnik, startAngle, endAngle);
+		var krugX = Math.random() * 800;
+		var krugY = Math.random() * 600;
+		var poluprecnik = Math.random() * 100;
+		var boja = Math.floor(Math.random() * paleta.length);
+
+		platno.fillStyle = paleta[boja];
+		platno.beginPath();
+		platno.arc(krugX, krugY, poluprecnik, 0, 2 * Math.PI);
+		platno.closePath();
+		platno.fill();
+		platno.lineWidth = 4;
+		platno.stroke();	
+	} //kraj loopa
+} //kraj draw  
+
+</script>
+</head>
+
+<body onload = "draw()">
+  <h1>Crtanje na platnu</h1>
+
+  <canvas id = "platno"
+          width = "800"
+          height = "600">
+    Ovaj tekst izlazi ako browser ne podržava canvas...
+	
+  </canvas>
+</body>
+</html>
+-

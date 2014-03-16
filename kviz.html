@@ -1,0 +1,163 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>Kviz</title>
+<style>
+.stvar {position:absolute;left: 0px; top: 0px; border: 2px; border-style: double; background-color: white; margin: 5px; padding: 5px; }
+
+#video {position:absolute; visibility:hidden; z-index: 0; }
+</style>
+
+<script type="text/javascript">
+var cinjenice = [
+    ["China", "Beijing", false],
+    ["India", "New Delhi", false],
+    ["European Union", "Brussels", false],
+    ["United States", "Washington, DC", false],
+    ["Indonesia", "Jakarta", false],
+    ["Brazil", "Brasilia", false],
+    ["Russia", "Moscow", false],
+    ["Japan", "Tokyo", false],
+    ["Mexico", "Mexico City", false],
+    ["Germany", "Berlin", false],
+    ["Turkey", "Ankara", false],
+    ["France", "Paris", false],
+    ["United Kingdom", "London", false],
+    ["Italy", "Rome", false],
+    ["South Africa", "Pretoria", false],
+    ["South Korea", "Seoul", false],
+    ["Argentina", "Buenos Aires", false],
+    ["Canada", "Ottawa", false],
+    ["Saudi Arabia", "Riyadh", false],
+    ["Australia", "Canberra", false]
+];
+
+var elementi;
+var brojPitanja = 4; //number of questions asked in a game
+var elementupokretu;
+var povlacipotez = false;
+var razmak = 300;
+var kolona1_x = 20;
+var red1_y = 200;
+var sirinaReda = 50;
+var fioke = new Array(brojPitanja);
+
+function postaviScenu() {
+    postaviIgru();
+}
+
+function postaviIgru() {
+    var i;
+    var z; //kao zemlja, izbor reda za činjenice
+    var izborFioke;
+    var ovajx = kolona1_x;
+    var ovajy = red1_y;
+    var novielement;
+    var zasebniId;
+    // mark all cinjenice as not being used.
+    for(i = 0; i < cinjenice.length; i++) {
+        cinjenice[i][2] = false;
+    }
+    for(i = 0; i < brojPitanja; i++) {
+        fioke[i] = -100;
+    }
+    for(i = 0; i < brojPitanja; i++) {
+        do {
+            z = Math.floor(Math.random() * cinjenice.length);
+        }
+        while (cinjenice[z][2] == true)
+        cinjenice[z][2] = true;
+        zasebniId = "z" + String(z);
+        novielement = document.createElement('zemlja');
+        novielement.innerHTML = (
+            "<div class='stvar' id='" + zasebniId + "'>praznomesto</div>");
+        document.body.appendChild(novielement);
+        elementi = document.getElementById(zasebniId);
+        elementi.textContent = cinjenice[z][0];
+        elementi.style.top = String(ovajy) + "px";
+        elementi.style.left = String(ovajx) + "px";
+        elementi.addEventListener('click', uzmiElement, false);
+        zasebniId = "g" + String(z);
+        novielement = document.createElement('glavnigrad');
+        novielement.innerHTML = (
+            "<div class='stvar' id='" + zasebniId + "'>praznomesto</div>");
+        document.body.appendChild(novielement);
+        elementi = document.getElementById(zasebniId);
+        elementi.textContent = cinjenice[z][1];
+        // put this stvar in random choice from empty fioke
+        do {
+            izborFioke = Math.floor(Math.random() * brojPitanja);
+        }
+        while (fioke[izborFioke] >= 0)
+        fioke[izborFioke] = z;
+        elementi.style.top = String(red1_y + izborFioke * sirinaReda) + "px";
+        elementi.style.left = String(kolona1_x + razmak) + "px";
+        elementi.addEventListener('click', uzmiElement, false);
+        ovajy += sirinaReda;
+    }
+    document.forma.poeni.value = "0";
+    return false;
+}
+
+function uzmiElement(ev) {
+    var thisx;
+    var thisxn;
+    var sc;
+    if(povlacipotez) {
+        if(this == elementupokretu) {
+            elementupokretu.style.backgroundColor = "white";
+            povlacipotez = false;
+            return;
+        }
+        thisx = this.style.left;
+        thisx = thisx.substring(0, thisx.length - 2); //remove the px
+        thisxn = Number(thisx) + 115;
+        elementupokretu.style.left = String(thisxn) + "px";
+        elementupokretu.style.top = this.style.top;
+        povlacipotez = false;
+        if(this.id.substring(1) == elementupokretu.id.substring(1)) {
+            elementupokretu.style.backgroundColor = "gold";
+            this.style.backgroundColor = "gold";
+            document.forma.out.value = "RIGHT";
+            sc = 1 + Number(document.forma.poeni.value);
+            document.forma.poeni.value = String(sc);
+            if(sc == brojPitanja) {
+                v = document.getElementById("video");
+                v.style.visibility = "visible";
+                v.style.zIndex = "10000";
+                v.play();
+            }
+        } else {
+            document.forma.out.value = "WRONG";
+            elementupokretu.style.backgroundColor = "white";
+        }
+    } else {
+        povlacipotez = true;
+        elementupokretu = this;
+        elementupokretu.style.backgroundColor = "tan";
+    }
+}
+
+</script>
+</head>
+<body onLoad="postaviScenu();">  
+<h1>G20 Countries and Capitals </h1><br/>
+
+Click on zemlja or capital and then click on corresponding capital or zemlja.
+<p>
+Reload for new game.
+<form name="forma" >
+Action: <input name="out" type="text" value="RIGHT OR WRONG"/>
+Score: <input name="poeni" type="text" value="0"/>
+</form>
+</p>
+
+
+<video id="video" controls="controls"  preload="auto"> 
+<source src="sfire3.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'> 
+<source src="sfire3.theora.ogv" type='video/ogg; codecs="theora, vorbis"'> 
+<source src="sfire3.webmvp8.webm" type="video/webm; codec="vp8, vorbis"'"> 
+Your browser does not accept the video tag.
+ </video>
+</body>
+</html>

@@ -1,0 +1,96 @@
+
+<HTML>
+
+<HEAD>
+<TITLE>Randomly Generated Idea</TITLE>
+<script LANGUAGE="JavaScript">
+
+
+ideas = new Array(4);
+
+ideas[0] = "Type \"about:cache\" into your browser to find everything that is stored in your cache.";
+ideas[1] = "Type \"about:mozilla\" to get an odd message from the Netscape team."
+ideas[2] = "Hold down shift when pressing reload to clear a page\'s items from cache."
+ideas[3] = "Type \"view-source:\" preceding a document\'s URL to automatically view its source."
+
+</script>
+<META NAME="GENERATOR" CONTENT="Microsoft FrontPage 4.0">
+<META NAME="ProgId" CONTENT="FrontPage.Editor.Document">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+
+<P ALIGN="center"><IMG SRC="../images/banner.gif" BORDER="0" width="550" height="82"></P>
+<P>Today's Randomly Generated Idea is:</P>
+<P><script LANGUAGE="JavaScript">
+
+// Where you place this is where the random object will be displayed.
+
+var rndquote = ideas[Math.round((ideas.length - 1) * Math.random())];
+document.write(rndquote);
+
+function demo1(){
+	var rndNum = Math.random();
+	
+	alert("ideas.length - 1 = " + (ideas.length -1));
+	alert("Math.random() = " + rndNum);
+	alert("(ideas.length - 1) * Math.random() = \n" + (ideas.length - 1) + " * " + rndNum + " = " + (ideas.length - 1) * rndNum);;
+	alert(
+	"Math.round((ideas.length - 1) * Math.random()) =\n" +  
+	"Math.round(" + (ideas.length - 1) * rndNum + ") = " + 
+	 Math.round((ideas.length - 1) * rndNum)
+	);
+	
+	alert("ideas[" + Math.round((ideas.length - 1) * rndNum) + "] = " + ideas[Math.round((ideas.length - 1) * rndNum)]);
+}
+
+</script> </P>
+<FORM>
+  <DIV ALIGN="center">
+    <CENTER>
+    <P><INPUT TYPE="BUTTON" VALUE="View Source" ONCLICK="location = &quot;view-source:&quot; + location"></P>
+    </CENTER>
+  </DIV>
+</FORM>
+<DIV ALIGN="center">
+  <CENTER>
+  <TABLE BORDER="0" WIDTH="95%" CELLSPACING="0" CELLPADDING="0">
+    <TR>
+      <TD WIDTH="100%">
+        <HR>
+        <P>&lt;<FONT COLOR="#800080">SCRIPT</FONT>&gt;</P>
+        <P><FONT COLOR="#0000FF">//</FONT> var ideas = <B>new</B> Array(4);<BR>
+        var ideas = <B>new</B> Array();</P>
+        <P>ideas[0] = &quot;Type \&quot;about:cache\&quot; into your browser to
+        find everything that is stored in your cache.&quot;;<BR>
+        ideas[1] = &quot;Type \&quot;about:mozilla\&quot; to get an odd message
+        from the Netscape team.&quot;;<BR>
+        ideas[2] = &quot;Hold down shift when pressing reload to clear a page\'s
+        items from cache.&quot;;<BR>
+        ideas[3] = &quot;Type \&quot;view-source:\&quot; preceding a document\'s
+        URL to automatically view its source.&quot;;</P>
+        <P>&lt;/<FONT COLOR="#800080">SCRIPT</FONT>&gt;</P>
+        <P>Today's Randomly Generated Idea is:</P>
+        <P>&lt;<FONT COLOR="#800080">SCRIPT</FONT>&gt;</P>
+        <P><FONT COLOR="#0000FF">// Where you place this is where the random
+        object will be displayed.</FONT></P>
+        <P>var Quote = <A HREF="javascript:demo1()">ideas[Math.round((ideas.length
+        - 1) * Math.random())]</A>;</P>
+        <P>document.<B><FONT COLOR="#0000FF">write</FONT></B>(Quote);</P>
+        <P>&lt;/<FONT COLOR="#800080">SCRIPT</FONT>&gt;</P>
+        <P>&lt;<FONT COLOR="#800080">BODY</FONT>&gt;</P>
+        <P>&lt;<FONT COLOR="#800080">FORM</FONT>&gt;<BR>
+        &nbsp;&nbsp;&nbsp;&nbsp; &lt;<FONT COLOR="#800080">INPUT</FONT><FONT COLOR="#FF0000">
+        TYPE=&quot;</FONT><FONT COLOR="#0000FF">BUTTON</FONT><FONT COLOR="#FF0000">&quot;
+        VALUE=&quot;</FONT><FONT COLOR="#0000FF">View Source</FONT><FONT COLOR="#FF0000">&quot;<BR>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </FONT><FONT COLOR="#008080"><STRONG>onClick</STRONG></FONT><FONT COLOR="#FF0000">=&quot;</FONT><FONT COLOR="#0000FF">location
+        = 'view-source:' + location</FONT><FONT COLOR="#FF0000">&quot;</FONT>&gt;<BR>
+        &lt;/<FONT COLOR="#800080">FORM</FONT>&gt;</TD>
+    </TR>
+  </TABLE>
+  </CENTER>
+</DIV>
+
+</BODY>
+
+</HTML>

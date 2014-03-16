@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Fractal Zoomer - Javascript, HTML5 canvas</title>
+<link href="default.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+
+<body>
+<script type="text/javascript">
+// Function to allow one JavaScript file to be included by another.
+// Copyright (C) 2006-08 www.cryer.co.uk
+//function IncludeJavaScript(jsFile)
+//{
+//  document.write('<script type="text/javascript" src="'
+//    + jsFile + '"></scr' + 'ipt>'); 
+//}
+//IncludeJavaScript('fractal.js');
+</script>
+<script type="text/javascript" src="fractal.js"></script>
+<script type="text/javascript" src="color_lib.js"></script>
+<script type="text/javascript" language="JavaScript"> 
+ 
+function resetcoords() {
+	document.getElementById("ty").value = "";
+	document.getElementById("by").value = "";
+	document.getElementById("rx").value = "";
+	document.getElementById("lx").value = "";
+	if (document.getElementById("algorithm").value ==1 || document.getElementById("algorithm").value ==5 || document.getElementById("algorithm").value ==9 || document.getElementById("algorithm").value ==10 || document.getElementById("algorithm").value ==11) {
+		var newHTML = "<td> C(real):</td><td><input type=\"text\" size=\"4\" value=\"\" name=\"cr\" id=\"cr\"> </td>\n<td> C(imaginary):</td><td><input type=\"text\" size=\"4\" value=\"\" name=\"ci\" id=\"ci\"></td>";
+		document.getElementById('Julia_args').innerHTML = newHTML
+	} else {
+		var newHTML = "<td><input type=\"hidden\" size=\"4\" value=\"\" name=\"cr\" id=\"cr\"><td><td><input type=\"hidden\" size=\"4\" value=\"\" name=\"ci\" id=\"ci\"></td>";
+		document.getElementById('Julia_args').innerHTML = newHTML
+	}
+}
+ 
+</script> 
+<body onLoad="init();">
+<table width="100%" border="0">
+<tr>
+        <td width="5%"></td>
+        <td width="90%" align="center">
+	<h2>Welcome to the Fractal Zoomer HTML5 Canvas Edition</h2>
+	This version uses Javascript to render the images to the new canvas element available in HTML5.
+	This page has been tested with Firefox 3.6, Opera 10.5 and Chrome<br><br>
+	To zoom on a section of the fractal click and drag to highlight the region.  You can reload the page or click <a 
+href="./">here</a><br>
+<canvas id="theCanvas" width="500" height="500">
+Fallback content, in case the browser does not support Canvas.
+</canvas>
+<table> 
+	<tr><td> 
+	<table> 
+	<tr><td> colorscheme:</td><td><select name="colorscheme" id="colorscheme"> 
+		<option value=0>Simple</option> 
+		<option value=1> 5 Color Cyclic 1</option> 
+		<option value=2>5 Color Cyclic 2</option> 
+		<option value=3>12 Color Cyclic 1</option> 
+		<option value=4>36 Color Cyclic</option> 
+		<option value=5>HSV 0-360</option> 
+		<option value=6>HSV 360-0</option> 
+		<option value=7>HSV with static modulus</option> 
+		<option value=8>HSV with percentage modulus</option> 
+		<option value=9>HSV with percentage modulus 2</option> 
+		<option value=99>2 Color Black and White</option> 
+		</select> 
+	<td></tr> 
+	<tr><td> algorithm:</td><td><select name="algorithm" id="algorithm" onchange="resetcoords();"> 
+		<option value=0>Mandelbrot (Quadratic)</option> 
+		<option value=1>Julia (Quadratic)</option> 
+		<option value=2>Burning Ship</option> 
+		<option value=3>Newton</option> 
+		<option value=4>Star</option> 
+		<option value=5>Phoenix, Julia type</option> 
+		<option value=6>Phoenix, Mandelbrot type</option> 
+		<option value=7>Cubic Mandelbrot</option> 
+		<option value=8>Quartic Mandelbrot</option> 
+		<option value=9>Cubic Julia</option> 
+		<option value=10>Quartic Julia</option> 
+		<option value=11>Cubic Julia Experimental</option> 
+		<option value=12>Mandelbrot Interior Coloring</option> 
+		<option value=13>Mandelbrot Interior Coloring 2</option> 
+		<option value=99>Blank</option> 
+		</select> 
+	</td></tr> 
+	<tr id="Julia_args">
+		<td><input type="hidden" size="4" value="" name="cr" id="cr"><td><td><input type="hidden" size="4" value="" name="ci" id="ci"></td>
+	<tr> 
+	<input type="hidden" size="2" name="width" id="width"> 
+	</table></td> 
+	<td>
+		<table> 
+		<tr><td> Left X Coord</td><td><input type="text" size="2" name="lx" id="lx"> </td></tr> 
+		<tr><td> Right X Coord</td><td><input type="text" size="2" name="rx" id="rx"> </td></tr> 
+		<tr><td> Top Y Coord</td><td><input type="text" size="2" name="ty" id="ty"> </td></tr> 
+		<tr><td> Bottom Y Coord</td><td><input type="text" size="2" name="by" id="by"> </td></tr> 
+		<tr><td><br><br> 
+	</td>
+	</tr> 
+	</table>
+	</td></tr></table><input type="submit" value="Redraw"  onclick="draw();"></td>
+	<td width="5%"></td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body id="telo">
+<h1 id="zaglavlje">Sve se menja</h1>
+
+<p id="prvi">
+JavaScript može promeniti stil cele stranice.
+</p>
+
+<p id="drugi">
+I svakog pasusa ponaosob.
+</p>
+
+<script>
+function menjajStil(){
+	pr=document.getElementById("prvi"); // Nalazi prvi pasus
+	pr.style.color="#ff0000";          // Menja stil
+
+	dr=document.getElementById("drugi"); // Nalazi drugi pasus
+	dr.style.color="#ffff00";          // Menja stil
+
+	za=document.getElementById("zaglavlje"); // Nalazi zaglavlje
+	za.style.color="#ff00ff";          // Menja stil
+
+	te=document.getElementById("telo"); //Nalazi telo
+	te.style.backgroundColor="#000000"; //Menja stil
+}
+</script>
+
+<button type="button" onclick="menjajStil()">Menjaj ceo stil!</button>
+
+<h1 id="id1">Samo naslov</h1>
+<button type="button" 
+onclick="document.getElementById('id1').style.color='red'">
+Menjaj naslov!</button>
+
+</body>
+</html> 

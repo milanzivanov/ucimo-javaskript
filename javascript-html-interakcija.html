@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="intro">Hello World!</p>
+
+<script>
+//uzima sadržaj iz pasusa
+txt=document.getElementById("intro").innerHTML;
+
+//ispisuje uzeti sadržaj
+document.write(txt);
+
+/* NALAŽENJE HTML ELEMENATA
+//nalaženje preko id
+document.getElementById();	
+//nalaženje preko klase
+document.getElementsByClassName();
+//nalaženje preko elementa
+document.getElementsByTagName();	
+
+UPISIVANJE U HTML
+//promena sadržaja HTML elementa
+document.getElementById(id).innerHTML="Novi tekst!";	
+
+POZIVA FUNKCIJU
+document.getElementById(id).onclick=function(){code}
+*/
+</script>
+
+<div id="main">
+<p>The DOM is very useful.</p>
+<p>This example demonstrates the <b>getElementsByTagName</b> method</p>
+</div>
+
+<script>
+var x=document.getElementById("main");
+var y=x.getElementsByTagName("p");
+//nalazi i ispisuje prvi pasus
+document.write('First paragraph inside "main" is: ' + y[0].innerHTML);
+//nalazi i ispisuje drugi pasus
+document.write('Second paragraph inside "main" is: ' + y[1].innerHTML);
+</script>
+
+</body>
+</html>

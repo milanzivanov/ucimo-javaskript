@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang = "sr-RS">
+<head>
+  <meta charset = "UTF-8" />
+  <title>Crtanje na platnu</title>
+	<style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+	  canvas {
+		background-color: yellow;
+	} 
+	</style>
+</head>
+
+<body>
+  <canvas id = "platno"></canvas>
+
+<script type = "text/javascript">
+var platno = document.getElementById('platno').getContext('2d');
+platno.canvas.width  = window.innerWidth;
+platno.canvas.height = window.innerHeight;
+var x = 200;
+var y = 300;
+
+function crtanje(){	
+    platno.beginPath();
+    platno.moveTo(x,y); //pocetna tacka
+    platno.lineTo(
+				x = Math.sin(x), //naredna tacka x
+				y = y * Math.PI ); //naredna tacka y
+					
+//uslovi koji vracaju liniju na platno
+	if (x > window.innerWidth) {
+		x = 0.01;
+	}
+	if (x < 0) {
+		x = window.innerWidth;
+	}
+	if (y > window.innerHeight) {
+		y = 0.01;
+	}	
+	if (y < 0) {
+		y = window.innerHeight;
+	}
+	platno.lineWidth = 3;
+	platno.strokeStyle = '#ff0000'; //boja linije
+    platno.stroke();
+} // kraj crtanja 
+
+setInterval(crtanje,100);
+
+</script>  
+</body>
+</html>
