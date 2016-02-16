@@ -1,6 +1,0 @@
-
-var TrackInformation = {
-
-  basicTrophyType: Coin,
-
-};
