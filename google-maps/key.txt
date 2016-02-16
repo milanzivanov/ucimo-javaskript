@@ -1,0 +1,3 @@
+AIzaSyAT7HCEnW9DCAykOOzTkoOTUqBWCupDXHQ
+
+http://maps.googleapis.com/maps/api/staticmap?parameters

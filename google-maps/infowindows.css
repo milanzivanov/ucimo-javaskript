@@ -1,0 +1,32 @@
+
+.info-windows{
+	width: 144px;
+	height:106px;
+	color: #ffedc8;
+	font: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	max-width: none;
+	padding:0px;
+	margin:0px;
+}
+.info-windows img{ 
+	padding:0px;
+	margin:0px;
+}
+
+.i-box {
+	max-width: none;
+	width: 144px;
+	height:106px;
+	color:#333;
+}
+
+.i-str {
+	background-color:#fff;
+	position:absolute;
+	left:32px;
+	top:80px;
+	height:18px;
+	width:106px;
+	margin-bottom:1px;
+	padding:6px 2px 2px 4px;
+}

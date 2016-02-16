@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+	<title>Dušegupka</title>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type ="text/javascript" src="v3_epoly.js"></script>
+
+<style>
+html{
+	height:100%;}
+body{
+	height:100%;
+	margin:0px;
+	font-family: Helvetica,Arial;}
+</style>
+
+<script type="text/javascript">
+//ne radi zoom
+
+var mapa;
+var putnaSluzba;
+var dusegupka = null;
+var linija = null;
+var linija2 = null;
+var brzina = 0.000005,
+    cekanje = 1;
+var infodusegupka = null;
+
+var korak = 50; // 5; // metres
+var brzinaAnimacije = 100; // milliseconds
+var rastojanje;
+var k = 0;
+var brzina = "";
+var poslednjiVertex = 1;
+var drzacAnimacije = null;
+
+function praviMarker(latlng, natpis, html) {
+    var infosadrzaj = '<b>' + natpis + '</b><br>' + html;
+    var dusegupka = new google.maps.Marker({
+        position: latlng,
+        map: mapa,
+		icon: 'slike/dusegupka.png',
+        title: natpis,
+        zIndex: Math.round(latlng.lat() * -100000) << 5
+    });
+    dusegupka.myname = natpis;
+
+    google.maps.event.addListener(dusegupka, 'click', function () {
+        infodusegupka.setContent(infosadrzaj);
+        infodusegupka.open(mapa, dusegupka);
+    });
+    return dusegupka;
+}
+
+function postaviMapu() {
+    infodusegupka = new google.maps.InfoWindow({
+        size: new google.maps.Size(150, 50)
+    });
+    // Instantiate a directions service.
+    putnaSluzba = new google.maps.DirectionsService();
+
+    // Create a mapa and center in Belgrade
+    var myOptions = {
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    mapa = new google.maps.Map(document.getElementById("mesto-za-mapu"), myOptions);
+
+    address = 'belgrade'
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({
+        'address': address
+    }, function (results, status) {
+        mapa.setCenter(results[0].geometry.location);
+    });
+
+    // Create a renderer for directions and bind it to the mapa.
+    var rendererOptions = {
+        map: mapa
+    }
+    directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
+    linija = new google.maps.Polyline({
+        path: [],
+        strokeColor: '#FF0000',
+        strokeWeight: 3
+    });
+    linija2 = new google.maps.Polyline({
+        path: [],
+        strokeColor: '#FF0000',
+        strokeWeight: 3
+    });
+}
+
+var koraci = []
+
+function odrediPutanju() {
+
+	if (drzacAnimacije) {
+		clearTimeout(drzacAnimacije);
+	}
+	if (dusegupka) {
+		dusegupka.setMap(null);
+	}
+	linija.setMap(null);
+	linija2.setMap(null);
+	directionsDisplay.setMap(null);
+	linija = new google.maps.Polyline({
+		path: [],
+		strokeColor: '#FF0000',
+		strokeWeight: 3
+	});
+	linija2 = new google.maps.Polyline({
+		path: [],
+		strokeColor: '#FF0000',
+		strokeWeight: 3
+	});
+	// Create a renderer for directions and bind it to the mapa.
+	var rendererOptions = {
+		map: mapa
+	}
+	directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+
+	var start = document.getElementById("start").value;
+	var end = document.getElementById("end").value;
+	var travelMode = google.maps.DirectionsTravelMode.DRIVING
+
+	var request = {
+		origin: start,
+		destination: end,
+		travelMode: travelMode
+	};
+
+	// Route the directions and pass the response to a function to create markers for each korak.
+	putnaSluzba.route(request, function (response, status) {
+		if (status == google.maps.DirectionsStatus.OK) {
+			directionsDisplay.setDirections(response);
+
+			var bounds = new google.maps.LatLngBounds();
+			var route = response.routes[0];
+			startLocation = new Object();
+			endLocation = new Object();
+
+			// For each route, display summary information.
+			var path = response.routes[0].overview_path;
+			var legs = response.routes[0].legs;
+			for (i = 0; i < legs.length; i++) {
+				if (i == 0) {
+					startLocation.latlng = legs[i].start_location;
+					startLocation.address = legs[i].start_address;
+					// dusegupka = google.maps.Marker({map:mapa,position: startLocation.latlng});
+					dusegupka = praviMarker(legs[i].start_location, "start", legs[i].start_address, "green");
+				}
+				endLocation.latlng = legs[i].end_location;
+				endLocation.address = legs[i].end_address;
+				var koraci = legs[i].steps;
+				for (j = 0; j < koraci.length; j++) {
+					var nextSegment = koraci[j].path;
+					for (k = 0; k < nextSegment.length; k++) {
+						linija.getPath().push(nextSegment[k]);
+						bounds.extend(nextSegment[k]);
+					}
+				}
+			}
+			linija.setMap(mapa);
+			mapa.fitBounds(bounds);
+			mapa.setZoom(18); //izgleda ne radi
+			kamionKreni();
+		}
+	});
+} //kraj odrediPutanju
+
+//=============== animation functions ======================
+function crtaLiniju(putanja) {
+    // crta liniju na svakih 20 vertices, jer je na svakih 100-vertex previše sporo
+    if (linija2.getPath().getLength() > 20) {
+        linija2 = new google.maps.Polyline([linija.getPath().getAt(poslednjiVertex - 1)]);
+    }
+
+    if (linija.GetIndexAtDistance(putanja) < poslednjiVertex + 2) {
+        if (linija2.getPath().getLength() > 1) {
+            linija2.getPath().removeAt(linija2.getPath().getLength() - 1)
+        }
+        linija2.getPath().insertAt(linija2.getPath().getLength(), linija.GetPointAtDistance(putanja));
+    } else {
+        linija2.getPath().insertAt(linija2.getPath().getLength(), endLocation.latlng);
+    }
+}
+
+
+function kamionMrda(putanja) {
+    if (putanja > rastojanje) {
+        mapa.panTo(endLocation.latlng);
+        dusegupka.setPosition(endLocation.latlng);
+        return;
+    }
+    var trenutnaTacka = linija.GetPointAtDistance(putanja);
+    mapa.panTo(trenutnaTacka);
+    dusegupka.setPosition(trenutnaTacka);
+    crtaLiniju(putanja);
+    drzacAnimacije = setTimeout("kamionMrda(" + (putanja + korak) + ")", brzinaAnimacije);
+}
+
+
+function kamionKreni() {
+    rastojanje = linija.Distance();
+    mapa.setCenter(linija.getPath().getAt(0));
+    linija2 = new google.maps.Polyline({
+        path: [linija.getPath().getAt(0)],
+        strokeColor: "#FF0000",
+        strokeWeight: 10
+    });
+    setTimeout("kamionMrda(50)", 2000); // Allow time for the initial mapa display
+}
+
+</script>
+
+</head>
+<body onload="postaviMapu()">
+
+	<div id="tools">
+		start:
+		<input type="text" name="start" id="start" value="Staro Sajmište centralni toranj"/>
+		cilj:
+		<input type="text" name="end" id="end" value="Спомен парк Јајинци"/>
+		<input type="submit" onclick="odrediPutanju();"/>
+	</div>
+
+	<div id="mesto-za-mapu" style="width:100%;height:100%;"></div>
+
+</body>
+</html>

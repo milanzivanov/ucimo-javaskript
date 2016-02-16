@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  
+    <title>Jugoslavija</title>
+	<meta charset="UTF-8">
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+	
+	<style>
+	html, body, #mesto-za-mapu {
+		height: 100%;
+		margin: 0px;
+		padding: 0px
+	}
+	</style>
+
+	<script>
+	var mapa;
+	var lokacijaCentar = new google.maps.LatLng(43.866667,18.416667);
+	var MOJ_TIP_MAPE = 'custom_style';
+
+	function postaviMapu() {
+	  var bojeMape = [
+		{
+		  stylers: [
+			{ hue: '#890000' },
+			{ visibility: 'simplified' },
+			{ gamma: 0.5 },
+			{ weight: 0.5 }
+		  ]
+		},
+		{
+		  elementType: 'labels', //natpisi
+		  stylers: [
+			{ visibility: 'off' }
+		  ]
+		},
+		{
+		  featureType: 'water', //voda
+		  stylers: [
+			{ color: '#adc9b8' }
+		  ]
+		},
+		{  
+		featureType: 'landscape.natural', //priroda
+		elementType: 'all',  
+		stylers: [  
+			{ hue: '#809f80' },  
+			{ lightness: -35 }  
+		]  
+		},
+		{  
+		featureType: 'road', //auto-putevi
+		elementType: 'geometry',  
+		stylers: [  
+			{ hue: '#d5c18c' },  
+			{ lightness: 14 }  
+		]  
+		},
+		{  
+		featureType: 'road.local', //putevi
+		elementType: 'all',  
+		stylers: [  
+			{ hue: '#ffd7a6' },  
+			{ saturation: 100 },  
+			{ lightness: -12 }		
+		]  
+		},
+		{
+		featureType: 'poi', //parkovi
+		elementType: 'all',
+		stylers: [
+			{ hue: '#00ff00' },
+			{ saturation: 100 },
+			{ lightness: -36 },
+			{ visibility: 'on' }
+		]
+		}	
+	  ];
+
+	  var opcijeMape = {
+		zoom: 6,
+		center: lokacijaCentar,
+		mapTypeControlOptions: {
+		  mapTypeIds: [google.maps.MapTypeId.ROADMAP, MOJ_TIP_MAPE]
+		},
+		mapTypeId: MOJ_TIP_MAPE
+	  };
+
+	  mapa = new google.maps.Map(document.getElementById('mesto-za-mapu'), opcijeMape);
+
+	  var ovajStil = {
+		name: 'Custom Style'
+	  };
+
+	  var mojStilMape = new google.maps.StyledMapType(bojeMape, ovajStil);
+
+	  mapa.mapTypes.set(MOJ_TIP_MAPE, mojStilMape);
+	}
+
+	</script>
+  </head>
+  
+  <body onload="postaviMapu()">
+  
+    <div id="mesto-za-mapu"></div>
+	
+  </body>
+  
+</html>
