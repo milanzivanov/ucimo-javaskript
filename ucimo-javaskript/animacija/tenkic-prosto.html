@@ -6,7 +6,7 @@
     <script type="text/javascript">
         var slika;
 
-        function postaviScenu() {
+        function init() {
             slika = document.getElementById('myImage');
             slika.style.position = 'relative';
             slika.style.left = '0px';
@@ -15,7 +15,7 @@
         function mrdaDesno() {
             slika.style.left = parseInt(slika.style.left) + 10 + 'px';
         }
-        window.onload = postaviScenu;
+        window.onload = init;
     </script>
 </head>
 

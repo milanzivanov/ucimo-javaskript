@@ -101,7 +101,7 @@
     } // end platform constructor
 
 
-    function postaviScenu(){
+    function init(){
         scene = new Scene();
         scene.setBG("black");
         lander = new Lander();
@@ -166,7 +166,7 @@
         }
     </style>
 </head>
-<body onload = "postaviScenu()">
+<body onload = "init()">
     <div id = "stats">DX: 0, DY: 0, Alt: 550</div>
 </body>
 </html>

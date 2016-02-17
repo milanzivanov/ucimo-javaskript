@@ -32,7 +32,7 @@
 	var ball_vx = 4;
 	var ball_vy = 8;
 	
-function postaviScenu(){  
+function init(){  
 	platno = document.getElementById('canvas').getContext('2d'); 
 	platno.lineWidth = ballradius;
 	platno.fillStyle ="rgb(200,0,50)";
@@ -84,7 +84,7 @@ function promeniBrzinu() {
 }
 </script>
 </head>
-<body onLoad="postaviScenu();">  
+<body onLoad="init();">  
 <canvas id="canvas" width="400" height="300">
 Your browser doesn't support the HTML5 element canvas.
 </canvas>  

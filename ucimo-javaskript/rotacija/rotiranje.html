@@ -3,7 +3,7 @@
 	<title>Rotiranje</title>
 </head>
 
-<body onLoad="postaviScenu();">
+<body onLoad="init();">
 
 	<canvas id="platno" width="400" height="300">
 	Your browser doesn't support the HTML5 element canvas.
@@ -13,7 +13,7 @@
 //redosled je bitan, ne moze u head, ne moze pozvati html element pre nego sto ga napravim
 	var platno = document.getElementById('platno').getContext('2d');
 
-	function postaviScenu(){
+	function init(){
 		platno.fillStyle = "rgb(255,0,0)";
 		platno.save();
 		platno.translate(50,50);

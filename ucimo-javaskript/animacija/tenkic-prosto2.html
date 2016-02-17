@@ -8,7 +8,7 @@
 	var slika = null;
 	var tenk_ide;
 
-	function postaviScenu() {
+	function init() {
 		slika = document.getElementById('tenkic');
 		slika.style.position = 'relative';
 		slika.style.left = '0px';
@@ -23,7 +23,7 @@
 		clearTimeout(tenk_ide);
 		slika.style.left = '0px';
 	}
-	window.onload = postaviScenu;
+	window.onload = init;
     </script>
 </head>
 

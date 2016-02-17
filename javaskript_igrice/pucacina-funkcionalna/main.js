@@ -64,7 +64,7 @@ function init() {
 	controls.noFly = true;
 
 	// World objects
-	postaviScenu();
+	init();
 	
 	// Artificial Intelligence
 	setupAI();
@@ -231,7 +231,7 @@ function render() {
 }
 
 // postavlja objekte u svet
-function postaviScenu() {
+function init() {
 	var VELICINA_JEDINICE = 250, units = mapW;
 
 	// geometrija: pod

@@ -1,23 +1,23 @@
 <div id="animation"></div>
 
 <style>
-#animation { 
+#animation {
     background-image: url(slike/sprite-jednorog.png);
-    background-repeat: no-repeat; 
-    height: 102px; 
-    width: 140px; 
+    background-repeat: no-repeat;
+    height: 102px;
+    width: 140px;
 }
 </style>
 
 <script>
-onload = function startAnimation() { 
-    var frameHeight = 102; 
-    var frames = 15; 
-    var frame = 0; 
-    var div = document.getElementById("animation"); 
-    setInterval(function () { 
-        var frameOffset = (++frame % frames) * -frameHeight; 
-        div.style.backgroundPosition = "0px " + frameOffset + "px"; 
-    }, 100); 
-} 
+onload = function startAnimation() {
+    var frejm = 1;
+    var ukupnoSlicica = 15;
+    var visinaSlicice = 102;
+    var element = document.getElementById("animation");
+    setInterval(function () {
+        var y = (++frejm % ukupnoSlicica) * -visinaSlicice;
+        element.style.backgroundPosition = "0px " + y + "px";
+    }, 100);
+}
 </script>

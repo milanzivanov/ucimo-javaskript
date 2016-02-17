@@ -137,7 +137,7 @@ svipredmeti.push(pracka);
 svipredmeti.push(djule);
 
 //postavlja platno for drawing and podloga1 for events
-function postaviScenu(){
+function init(){
    platno = document.getElementById('canvas').getContext('2d');
    podloga1 = document.getElementById('canvas');
    podloga1.addEventListener('mousedown',traziDjule,false);
@@ -238,7 +238,7 @@ function djuleLeti() {
 </script>
 </head>
 
-<body onLoad="postaviScenu();">  
+<body onLoad="init();">  
 
 	<canvas id="canvas" width="1200" height="600">
 	Your browser doesn't support the HTML5 element canvas.
