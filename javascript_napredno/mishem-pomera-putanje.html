@@ -7,11 +7,11 @@
         padding: 0px;
       }
     </style>
-    <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v5.0.1.min.js"></script>
+    <script src="../libs/kinetic-v5.0.1.min.js"></script>
     <script defer="defer">
       // globals
       var curveLayer, lineLayer, anchorLayer, quad, bezier
-      
+
       function updateDottedLines() {
         var q = quad;
         var b = bezier;
@@ -45,7 +45,7 @@
           document.body.style.cursor = 'default';
           this.setStrokeWidth(2);
           anchorLayer.draw();
-          
+
         });
 
         anchor.on('dragend', function() {
@@ -135,7 +135,7 @@
           updateDottedLines();
         });
 
-    
+
 
         stage.add(curveLayer);
         stage.add(lineLayer);
