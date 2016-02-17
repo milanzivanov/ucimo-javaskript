@@ -1,0 +1,13 @@
+{
+    "strict": "global",
+    "esnext": true,
+    "esversion": 6,
+    "strict": true,
+    "undef": true,
+    "unused": true,
+    "newcap": true,
+    "browser": true,
+    "module": true,
+    "devel": true,
+    "asi": true
+}
