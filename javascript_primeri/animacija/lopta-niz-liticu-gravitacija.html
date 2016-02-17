@@ -10,7 +10,7 @@
   </head>
   <body>
     <div id="container"></div>
-    <script src="http://d3lp1msu2r81bx.cloudfront.net/kjs/js/lib/kinetic-v5.0.1.min.js"></script>
+    <script src="../../libs/kinetic-v5.0.1.min.js"></script>
     <script defer="defer">
       /*
        * Vector math functions
@@ -148,10 +148,10 @@
             }
             ball.x(x).y(y);
           }
-          
+
           tween.finish();
         }
- 
+
       }
       function updateBall(frame) {
         var timeDiff = frame.timeDiff;
@@ -162,7 +162,7 @@
         var x = ball.getX();
         var y = ball.getY();
         var radius = ball.getRadius();
-        
+
         tween.reverse();
 
         // physics variables
@@ -248,7 +248,7 @@
            * curve's surface normal
            */
           collision = handleCurveCollision(ball, curve);
-          
+
         }
       }
 
@@ -303,7 +303,7 @@
         };
         anim.start();
       });
-      
+
       ball.on('mousedown', function() {
         anim.stop();
       });
@@ -315,11 +315,11 @@
       ball.on('mouseout', function() {
         document.body.style.cursor = 'default';
       });
-      
+
       ballLayer.add(ball);
       stage.add(curveLayer);
       stage.add(ballLayer);
-      
+
       var tween = new Kinetic.Tween({
         node: ball,
         fillRed: 255,
@@ -328,13 +328,13 @@
         duration: 0.3,
         easing: Kinetic.Easings.EaseOut
       });
-      
+
       anim = new Kinetic.Animation(function(frame) {
         updateBall(frame)
       }, ballLayer);
 
       anim.start();
-     
+
     </script>
   </body>
 </html>
