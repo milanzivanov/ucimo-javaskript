@@ -4,7 +4,7 @@
 <head>
     <title>Jugoslavija3</title>
 	<meta charset="UTF-8">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASm3CwaK9qtcZEWYa-iQwHaGi3gcosAJc"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
 
     <style type="text/css">
         #mesto-za-mapu {
@@ -18,52 +18,40 @@
 
 
     <script>
-	/* 
+	/*
 	https://developers.google.com/maps/documentation/javascript/reference#MapOptions
 	http://gmaps-samples-v3.googlecode.com/svn/trunk/styledmaps/wizard/index.html
-	*/	
+	*/
 
-		function postaviMapu() {
-		
+        function postaviMapu() {
             var opcijeMape = {
                 zoom: 6,
                 center: new google.maps.LatLng(43.866667, 18.416667),
-				disableDefaultUI: true,		// sakriva kontrole
 				types: ['(regions)'],
-                styles: [{
-                    featureType: "administrative",
+                styles:
+				[
+				  {
+					"featureType": "administrative",
+					"stylers": [
+					  { "visibility": "off" }
+					]
+				  },{
+					"featureType": "road",
+					"stylers": [
+					  { "visibility": "off" }
+					]
+				  }, {
+                    featureType: "poi.park",
                     stylers: [{
                         visibility: "off"
                     }]
-                }, {
-                    featureType: "road",
-                    stylers: [{
-                        visibility: "off"
-                    }]
-                }, {
-                    featureType: "poi",
-                    stylers: [{
-                        visibility: "off"
-                    }]
-                }, {
-                    featureType: "landscape.natural.terrain",
-                    stylers: [{
-                        visibility: "on"
-                    }]
-                },{
-                    featureType: "water",
-                    stylers: [{
-                        color: "#84afa3"
-                    }, {
-                        lightness: 52
-                    }]
-                }, {
-                    stylers: [{
-                        saturation: -17
-                    }, {
-                        gamma: 0.36
-                    }]
-                }]
+                  },{
+					"featureType": "landscape.natural.terrain",
+					"stylers": [
+					  { "visibility": "on" }
+					]
+				  }
+				]
             };
 
 			var mapa = new google.maps.Map(document.getElementById('mesto-za-mapu'), opcijeMape);
@@ -75,20 +63,20 @@
             var ikonica_okupiran = {
                 url: 'slike/kruzic-plavi.png'
             };
-			
+
 
 			var gradovi = [
 				['Drvar', 44.366667, 16.383333, true],
 				['Bihać', 44.816667, 15.866667, true],
 				['Užice', 43.85, 19.85, false]
 			];
-			
-			
+
+
 			for( i = 0; i < gradovi.length; i++ ) {
-			
+
 				var pozicija_ikonice = new google.maps.LatLng(gradovi[i][1], gradovi[i][2]);
 				var ikonica = gradovi[i][3] ? ikonica_slobodan : ikonica_okupiran;
-				
+
 				marker = new google.maps.Marker({
 					position: pozicija_ikonice,
 					map: mapa,

@@ -4,16 +4,16 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <title>Dušegupka</title>
     <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=ABQIAAAAPDUET0Qt7p2VcSk6JNU1sBSM5jMcmVqUpI7aqV44cW1cEECiThQYkcZUPRJn9vy_TWxWvuLoOfSFBw" type="text/javascript"></script>
-    <script src="epoly.js" type="text/javascript"></script>
-	
+    <script src="../../libs/epoly.js" type="text/javascript"></script>
+
 <style>
 body {
 	background-color:#eee;
 }
-</style>	
+</style>
 </head>
 <body onunload="GUnload()">
-    
+
     <div id="unos">
      <form onsubmit="start();return false" action="#">
       Unesite početnu i krajnju destinaciju:<br />
@@ -28,13 +28,13 @@ body {
     <div id="predjeno">Pređeno milja: 0.00</div>
 
     <script type="text/javascript">
-	
-/** potrebno nadograditi na google maps api v3 
+
+/** potrebno nadograditi na google maps api v3
 	https://developers.google.com/maps/documentation/javascript/v2/v2tov3 **/
-	
+
     //<![CDATA[
     if (GBrowserIsCompatible()) {
- 
+
       var mapa = new GMap2(document.getElementById("mesto-za-mapu"));
       mapa.addControl(new GMapTypeControl());
       mapa.setCenter(new GLatLng(44.812742, 20.442249),16);
@@ -52,7 +52,7 @@ body {
           slika.iconAnchor=new GPoint(16,9);
       var dusegupka;
       var k=0;
-      var brzina = "";   
+      var brzina = "";
 
       function crtaLiniju(putanja) {
         // crta liniju na svakih 20 vertices, jer je na svakih 100-vertex previše sporo
@@ -101,7 +101,7 @@ body {
         crtaLiniju(putanja);
         setTimeout("kamionMrda("+(putanja+korak)+")", brzinaAnimacije);
       }
-	
+
 	//kada se učita ruta, sakriva unos
       GEvent.addListener(ruta,"load", function() {
         document.getElementById("unos").style.display="none";
