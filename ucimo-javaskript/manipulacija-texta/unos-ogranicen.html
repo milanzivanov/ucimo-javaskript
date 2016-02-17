@@ -1,0 +1,19 @@
+<form name="forma-za-temu">
+
+	<textarea name="nov_sadrzaj" onKeyDown="ograniciUnos(this.form.nov_sadrzaj,this.form.brojac,100);" onKeyUp="ograniciUnos(this.form.nov_sadrzaj,this.form.brojac,100);">
+	</textarea><br>
+
+	<font size="1">(Maksimalno karaktera: 100)<br>
+	Ostalo ti je još <input name="brojac" size="3" value="100" readonly> karaktera.</font>
+
+</form>
+
+<script>
+function ograniciUnos(tekst_polje, brojac, maksimalno) {
+	if (tekst_polje.value.length > maksimalno) {
+		tekst_polje.value = tekst_polje.value.substring(0, maksimalno);
+	} else {
+		brojac.value = maksimalno - tekst_polje.value.length;
+	}
+}
+</script>

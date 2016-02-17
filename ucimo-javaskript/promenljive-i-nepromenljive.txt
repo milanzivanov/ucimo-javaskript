@@ -1,0 +1,36 @@
+PROMENLJIVE I NEPROMENLJIVE
+
+Promenljive ili varijable su nešto što se menja, varira, dok sve ostalo oko njih ostaje isto. 
+
+Najbolje ćemo zapamtiti preko primera iz života. Na primer:
+
+$sampion = "Djoka";
+$sampion = "Mika";
+$sampion = "Pera";
+
+Ovogodišnju titulu osvojio je $sampion.
+
+ili
+
+$precednik = "Slobodan Milošević";
+$precednik = "Boris Tadić";
+$precednik = "Tomislav Nikolić";
+
+Predsednik Srbije $precednik primio je visokog predstavnika EU i u kraćem i srdačnom razgovoru su zaključili....
+
+Nasuprot njima imamo nepromenljive iliti konstante. One su uvek iste, dok se sve oko njih menja.
+
+define("OCENAS", "Očenaš koji jesi na nebesi...");
+bolje godisnja doba...
+
+
+JavaScript does not have constants.
+
+You could use the convention of all uppercase for constants.
+
+var PI = 3.14;
+or you could wrap it in an object.
+
+window.CONSTANTS = {
+   PI : 3.14
+};

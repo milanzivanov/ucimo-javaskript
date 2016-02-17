@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Lazy Line Painter</title>
+        <meta name="description" content="A Jquery plugin for SVG path animation">  
+  
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        
+        <style>
+#svg7, #svg8 {
+    position:absolute;
+    width: 1022px;
+    height: 150px;
+    display:block;
+}
+		</style>
+        
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script>window.jQuery || document.write('<script src="jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script> 
+
+		<script src="jquery.lazylinepainter-1.4.1.min.js"></script>  
+        
+        <script type="text/javascript"> 
+/* 
+ * Lazy Line Painter - Path Object 
+ * Generated using 'SVG to Lazy Line Converter'
+ * 
+ * http://lazylinepainter.info 
+ * Copyright 2013, Cam O'Connell  
+ *  
+ */ 
+
+var pathObj = {
+    "svg7": {
+        "strokepath": [
+            {
+                "path": "  M399.188,44.625l96.813,33l-21.667,0.04L474.313,111L446,110.998V140h64.126V54.117h-14.667V40.035h14.667v-7.166h-15.5V16.5h51.155  l7.344,14.869h-35.666v8.166h36.416v15.748h-36.248V103.5h28.154l-6.08-6.078V86.168l9.012-9.012h17.08l8.57,8.568v12.107  l-6.404,6.666v14.293h34.832V67.998c0,0-8.332,5.666-17.332-4s3-16.666,3-16.666s-1.334,8.5,5.273,12.6  c3.305,2.051,9.059-0.934,9.059-0.934s8.904-5.281,5.334-12c-2.832-5.332-10.666-6.832-10.666-6.832s13.166-7.5,19.334,1.5  c7.248,10.578,0,18,0,18l58.289,25l-2.623,5.832l-62.703-25.832v67h25.074v-16.332h27.961v12h45V55l-14.998,4l-1.334-30.334  L707.791,33h13.334l39-18.334V51l-3.545,2.332L760.125,57v8.332L720.793,54v50h64.666V85.666l9.498-9.5h-6.832l23.002-48.5  L825.459,76h-20.666l-11.5,11.5V125h54.232v-17.334h13.268V48h21.334v7.334h98.332l-9,26.955l-3.332-4.955l-4.729,4.729l-4.5-4.502  l-5.125,5.125l-5-5l-4.217,4.217l-4.125-4.125l-3.498,3.498l-5.125-5.125l-5.535,5.535l-5.959-5.959l-5.5,5.5l-5.393-5.391  l-5.25,5.25l-5.982-5.984l-6.121,6.121l-5.625-5.625L882,80.041v3.625h-10.781v34.455h37.906v15.545h57.75v-31.75h44.484",
+                "duration": 3000
+            }
+        ],
+        "dimensions": {
+            "width": 1022,
+            "height": 150
+        }
+    },
+    "svg8": {
+        "strokepath": [
+
+            {
+                "path": "M400.25,44.625l-97.938,33.063h20.313l0.042,32.146  l27.958-0.021L350.5,129.5h-73.172V58.667h19.667v-37h-84.162v7.334h-7.172v-5l-11.833,8.77h-35.5l0,0h35.734L205.891,44.5v-6.166  h6.942v13.333h22.828v26.231h13v27.926h-73.265V81.205c0,0,9.599-1.121,9.599-9.455s-10.475-10.475-10.475-10.475v11.141h-10.859  V59.684c0,0-9.333,4.066-9.333,12.399s8.667,9.122,8.667,9.122v47.129h-33.208V94.935h-5.131V54.001l5.398-5.399l-5.398-12.601  h-6.661l-6,12.333l4.833,4.833V95.65h-6.5v40.017H99.465H82.078V115.25H67.32v-31.5V50.334h19.357V24.501H37.996L22.829,39.668  l15.667,9.666h10.666v75.167h-37.6",
+                "duration": 3000
+            }
+        ],
+        "dimensions": {
+            "width": 1022,
+            "height": 150
+        }
+    }
+}; 
+ 
+ 
+/* 
+ Setup and Paint your lazyline! 
+ */ 
+ 
+ $(document).ready(function(){ 
+     $('#svg7').lazylinepainter( 
+     {
+        "svgData": pathObj,
+        "strokeWidth": 3,
+        "strokeColor": "#89171a"
+     }).lazylinepainter('paint'); 
+     
+     $('#svg8').lazylinepainter( 
+     {
+        "svgData": pathObj,
+        "strokeWidth": 3,
+        "strokeColor": "#89171a"
+    }).lazylinepainter('paint');      
+     
+ });
+
+		</script>
+         
+    </head>
+    
+    <body> 
+     
+    <div id="svg7"></div>
+    <div id="svg8"></div>  
+        
+    </body>
+</html>

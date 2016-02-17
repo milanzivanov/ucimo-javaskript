@@ -1,0 +1,61 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+	<title>Animacija proba</title>
+<style>
+body {
+	background: black;
+}
+canvas {
+	width: 1000px;
+	height: 500px;
+}
+</style>
+</head>
+<body>
+	<canvas id="canvas3" width="1000" height="500"></canvas>
+
+<script>
+
+var canvas = document.getElementById('canvas3');
+var ctx = canvas.getContext('2d');
+var clear = function () {
+    ctx.fillStyle = 'black';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+};
+
+//frejmova po sekundi
+var drawFPS = function (fps) {
+    ctx.fillStyle = 'red';
+    ctx.fillText('FPS: ' + fps.toFixed(1), 5, 20);
+};
+var x = 0;
+var y = 0;
+var dx = 20; //px/sec 
+
+var dy = 0;
+var update = function (delta) {
+    var seconds = delta / 1000;
+    x += dx * seconds;
+    y += dy * seconds;
+};
+var draw = function () {
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(x, y, 50, 50);
+};
+var lastTime = Date.now();
+var interval = setInterval(function () {
+    var now = Date.now();
+    var elapsed = now - lastTime;
+
+    // stuff 
+
+    clear();
+    update(elapsed);
+    draw();
+    drawFPS(1 / (elapsed / 1000));
+    lastTime = now;
+}, 16);
+
+</script>
+</body>

@@ -1,0 +1,57 @@
+<!doctype html>
+<head>
+	<meta charset="UTF-8">
+<style>
+body {
+	background: black;
+}
+canvas {
+	width: 1000px;
+	height: 500px;
+}
+</style>
+</head>
+<body>
+
+	<canvas id="canvas1" width="1000" height="500"></canvas>
+
+<script>
+var canvas = document.getElementById('canvas1');
+var ctx = canvas.getContext('2d');
+
+var clear = function(){
+	ctx.fillStyle = 'black';
+	ctx.fillRect(0,0, canvas.width, canvas.height);
+};
+
+ctx.fillStyle = 'white';
+// x, y, width, height
+ctx.fillRect(50,50,100,100);
+clear();
+
+ctx.fillStyle = 'red';
+ctx.strokeStyle = 'white';
+ctx.beginPath();
+//x, y, radius, start, end, [anti-clockwise]
+ctx.arc(50, 50, 50, 0, Math.PI*2);
+ctx.closePath();
+ctx.fill();
+ctx.stroke();
+
+ctx.save();
+ctx.translate(100,100); 
+ctx.rotate(Math.PI/2);
+ctx.scale(2,2);
+ctx.fillStyle = 'lime';
+//text, x, y
+ctx.fillText('Zdravo Svete',0,0);
+ctx.restore();
+
+var image = new Image();
+image.src = 'partizanski-top2.gif';
+//image, xi, yi, wi, he, xc, yc, wc, hc	
+ctx.drawImage(image, 0, 0, 400, 99, 100, 200, 600,150);
+
+</script>
+</body>
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Lazy Line Painter</title>
+<script src="jquery-1.9.1.min.js"></script>
+<script src="raphael-min.js"></script> 
+<script src="jquery.lazylinepainter-1.4.1.min.js"></script>  
+
+<script> 
+/* 	KOMANDE
+	"duration": BRZINA ANIMACIJE
+    'strokeWidth'    // Adjust width of stroke
+    'strokeColor'    // Adjust stroke color 
+    'strokeCap'      // Adjust stroke cap  - butt  | round | square 
+    'strokeJoin'     // Adjust stroke join - miter | round | bevel 
+    'strokeDash'     // Adjust stroke dash - ["", "-", ".", "-.", "-..", ". ", "- ", "--", "- .", "--.", "--.."]
+    'strokeOpacity'  // Adjust stroke opacity 0 - 1 
+    'onComplete'     // Callback fired after animation
+    'delay'          // Delay before animation starts
+    'overrideKey'    // Set this property if you selector id doesn't match the key referencing your path data value within svgData. 
+ */
+
+(function( $ ){  
+	// Define object containing Raphael path data. http://lazylinepainter.info/
+
+/* 
+ * Lazy Line Painter - Path Object 
+ * Generated using 'SVG to Lazy Line Converter'
+ * 
+ * http://lazylinepainter.info 
+ * Copyright 2013, Cam O'Connell  
+ *  
+ */ 
+ 
+var svgData = {
+    "demo": {
+        "strokepath": [
+            {
+                "path": "M 368 242.86218 A 61.5 3.5 0 1 1  245,242.86218 A 61.5 3.5 0 1 1  368 242.86218 z",
+                "duration": 600
+            },
+            {
+                "path": "M 270 461.86218 A 67 257.5 0 1 1  136,461.86218 A 67 257.5 0 1 1  270 461.86218 z",
+                "duration": 600
+            },
+            {
+                "path": "M 164.57968,531.03995 L 135.91439,481.39021 L 193.24497,481.39021 L 164.57968,531.03995 z ",
+                "duration": 600
+            },
+            {
+                "path": "M 92.8634 308.53555 A 36.777584 47.81086 0 1 1  19.308231,308.53555 A 36.777584 47.81086 0 1 1  92.8634 308.53555 z",
+                "duration": 600
+            }
+        ],
+        "dimensions": {
+            "width": 625,
+            "height": 487
+        }
+    }
+}; 
+ 
+ 
+
+
+	
+})( jQuery );
+
+</script>	 
+</head>
+
+<body> 
+ 
+	<div id='demo'></div>  
+	
+</body>
+</html>
