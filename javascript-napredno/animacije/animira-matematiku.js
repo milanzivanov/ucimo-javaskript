@@ -2,14 +2,16 @@
 var canvas,
   context,
   toggle;
+var modifikatorVremena = 0.002;
+
 
 init();
 update();
 
 function init() {
   canvas = document.createElement('canvas');
-  canvas.width = 512;
-  canvas.height = 512;
+  canvas.width = 800;
+  canvas.height = 800;
   context = canvas.getContext('2d');
   document.body.appendChild(canvas);
 } // init
@@ -20,7 +22,8 @@ function update() {
 } // update
 
 function crtaj() {
-  var time = new Date().getTime() * 0.002;
+  var time = new Date().getTime() * modifikatorVremena;
+  console.log(time);
   var x = Math.sin(time) * 192 + 256;
   var y = Math.cos(time * 0.9) * 192 + 256;
   toggle = !toggle;
