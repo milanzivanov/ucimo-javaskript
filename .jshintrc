@@ -1,6 +1,5 @@
 {
     "strict": "global",
-    "esnext": true,
     "esversion": 6,
     "strict": true,
     "undef": true,

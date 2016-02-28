@@ -10,9 +10,9 @@
 function draw(){
 	var platno = document.getElementById('platno').getContext('2d');
 	var paleta = ["#701206", "ff0000", "#B36330", "#FFC861", "#96FFC9", "#276344", "orange", "yellow"];
-	
+
 	document.getElementById("platno").style.backgroundColor="lightblue";
-	
+
 	//crta jedan kvadrat
 	platno.fillStyle = paleta[0];
 	platno.fillRect(60, 140, 250, 150);
@@ -29,7 +29,7 @@ function draw(){
 	platno.fill();
 	platno.lineWidth = 4;
 	platno.stroke();
-	
+
 	//crta manji krug
 	platno.fillStyle = paleta[3];
 	platno.beginPath();
@@ -54,8 +54,8 @@ function draw(){
 	//piše slova
 	platno.font = "30px Verdana";
 	platno.fillText("Zdravo svete!", 50, 350);
-	
-	//crta neku neobjasnjivu krivu
+
+	//crta bezier krivu
 	platno.fillStyle = paleta[6];
 	platno.beginPath();
 	platno.moveTo(30, 30);
@@ -64,21 +64,21 @@ function draw(){
 	platno.lineTo(30, 30);
 	platno.fill();
 
-    //crta trougao
+  //crta trougao
 	platno.fillStyle = paleta[7];
 	platno.beginPath();
-    platno.moveTo(250,75);
-    platno.lineTo(300,125);
-    platno.lineTo(300,25);
-    platno.fill();
-	
-	//crta liniju
-    platno.beginPath();
-    platno.moveTo(35,365);
-    platno.lineTo(275,365);
-    platno.stroke();
+  platno.moveTo(250,75);
+  platno.lineTo(300,125);
+  platno.lineTo(300,25);
+  platno.fill();
 
-} // end draw  
+	//crta liniju
+  platno.beginPath();
+  platno.moveTo(35,365);
+  platno.lineTo(275,365);
+  platno.stroke();
+
+} // end draw
 
 </script>
 </head>
@@ -90,7 +90,7 @@ function draw(){
           width = "800"
           height = "600">
     Ovaj tekst izlazi ako browser ne podržava canvas...
-	
+
   </canvas>
 </body>
 </html>

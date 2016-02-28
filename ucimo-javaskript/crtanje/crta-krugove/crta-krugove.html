@@ -5,7 +5,7 @@
   <meta charset = "UTF-8" />
   <style type = "text/css">
   </style>
-<script type = "text/javascript">
+<script>
 
 function draw() {
 //radius je poluprecnik
@@ -15,7 +15,7 @@ function draw() {
 	//piše slova
 	platno.font = "24px Verdana";
 	platno.fillText("U smeru kazaljke", 40, 30);
-	
+
     for(var i=0; i<4; i++){
       for(var j=0; j<3; j++){
         platno.beginPath();
@@ -34,10 +34,10 @@ function draw() {
         }
       }
     } //kraj for loopa
-    
+
 	platno.font = "24px Verdana";
 	platno.fillText("Kontrakazaljci", 460, 30);
-	
+
 	//crta svaki drugi luk kontrakazaljci
 	for(var i=0; i<4; i++){
       for(var j=0; j<3; j++){
@@ -58,7 +58,7 @@ function draw() {
         }
       }
     } //kraj for
-	
+
   }
 }
 
