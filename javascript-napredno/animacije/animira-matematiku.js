@@ -1,9 +1,10 @@
 
-var canvas,
-  context,
-  toggle;
+var canvas;
+var context;
+var toggle = false;
+var prvaBoja = 'rgb(200,200,20)';
+var drugaBoja = 'rgb(20,20,200)';
 var modifikatorVremena = 0.002;
-
 
 init();
 update();
@@ -28,7 +29,7 @@ function crtaj() {
   var y = Math.cos(time * 0.9) * 192 + 256;
   toggle = !toggle;
 
-  context.fillStyle = toggle ? 'rgb(200,200,20)' : 'rgb(20,20,200)';
+  context.fillStyle = toggle ? prvaBoja : drugaBoja;
   context.beginPath();
   context.arc(x, y, 10, 0, Math.PI * 2, true);
   context.closePath();
