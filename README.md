@@ -1,4 +1,4 @@
-ucimo-javaskript
+Učimo Javaskript
 ==================
 
-Ovo je samo moja kolekcija vežbica i primera koda za JavaScript. Možda jednoga dana postane knjiga.
+Učimo Javaskript - od osnovnih lekcija (brojevi, strune, objekti, događaji) do naprednih primera (programi, simulacije, animacije). 
