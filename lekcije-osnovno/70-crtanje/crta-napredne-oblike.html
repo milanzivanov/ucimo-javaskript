@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <title>Crtanje na platnu</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <h1>Crtanje na platnu</h1>
+
+  <canvas id="platno" width="800" height="600"></canvas>
+  <script type="text/javascript">
+    var platno = document.getElementById('platno').getContext('2d');
+    platno.fillStyle = "#701206"
+
+    //crta krivu
+    platno.beginPath();
+    platno.moveTo(75, 25);
+    platno.quadraticCurveTo(25, 25, 25, 62.5);
+    platno.quadraticCurveTo(25, 100, 50, 100);
+    platno.quadraticCurveTo(50, 120, 30, 125);
+    platno.quadraticCurveTo(60, 120, 65, 100);
+    platno.quadraticCurveTo(125, 100, 125, 62.5);
+    platno.quadraticCurveTo(125, 25, 75, 25);
+    platno.stroke();
+
+    platno.beginPath();
+    platno.moveTo(75 + 200, 40 + 200);
+    platno.bezierCurveTo(75 + 200, 37 + 200, 70 + 200, 25 + 200, 50 + 200, 25 + 200);
+    platno.bezierCurveTo(20 + 200, 25 + 200, 20 + 200, 62.5 + 200, 20 + 200, 62.5 + 200);
+    platno.bezierCurveTo(20 + 200, 80 + 200, 40 + 200, 102 + 200, 75 + 200, 120 + 200);
+    platno.bezierCurveTo(110 + 200, 102 + 200, 130 + 200, 80 + 200, 130 + 200, 62.5 + 200);
+    platno.bezierCurveTo(130 + 200, 62.5 + 200, 130 + 200, 25 + 200, 100 + 200, 25 + 200);
+    platno.bezierCurveTo(85 + 200, 25 + 200, 75 + 200, 37 + 200, 75 + 200, 40 + 200);
+    platno.fill();
+  </script>
+</body>
+
+</html>

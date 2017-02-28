@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+</head>
+
+<body>
+
+  <p id="prvi"></p>
+  <p id="drugi"></p>
+
+  <script>
+    var sirina = window.innerWidth
+
+    var visina = window.innerHeight
+
+    x = document.getElementById("prvi");
+    x.innerHTML = "Unutrašnja širina ovog prozora je: " + sirina + ", a visina: " + visina + "."
+
+    //raspoloživa širina
+    y = document.getElementById("drugi");
+    y.innerHTML = "Raspoloživa širina ekrana je: " + screen.availWidth + ", a visina: " + screen.availHeight + "."
+  </script>
+
+</body>
+
+</html>

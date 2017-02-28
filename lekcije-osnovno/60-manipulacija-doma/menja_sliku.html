@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+
+	<img id="sijalica" onclick="promeniSliku()" src="http://www.w3schools.com/js/pic_bulboff.gif" width="100" height="180">
+
+	<p>Klikni sijalicu da upališ/ugasiš svetlo.</p>
+
+	<script>
+		const	element = document.getElementById('sijalica')
+		let upaljeno = false
+			
+		function promeniSliku() {
+			if (upaljeno) {
+				element.src = "http://www.w3schools.com/js/pic_bulboff.gif";
+			} else {
+				element.src = "http://www.w3schools.com/js/pic_bulbon.gif";
+			}
+			upaljeno = !upaljeno
+		}
+	</script>
+
+</body>
+
+</html>
