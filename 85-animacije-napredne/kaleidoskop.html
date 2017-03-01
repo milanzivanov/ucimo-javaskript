@@ -1,11 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html lang="en">
 
 <head>
 	<title>Kaleidoskop</title>
-	<meta name="viewport" content="width=device-width,user-scalable=0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
-	<link rel="apple-touch-icon" href="icon.gif">
-	<link rel="shortcut icon" href="ico.gif"></link>
 	<style type="text/css">
 		body {
 			margin: 0;
@@ -37,9 +34,9 @@
 	</style>
 </head>
 
-<body onload="resize()" onresize="resize()" onorientationchange="resize()">
+<body>
 	<a href="javascript:reset()" class="tap">
-		<div id="screen" style="background-color:#000000;display:none"><canvas id="shadebob"></canvas></div>
+		<canvas id="canvas"></canvas>
 	</a>
 
 	<script src="kaleidoskop.js"></script>
