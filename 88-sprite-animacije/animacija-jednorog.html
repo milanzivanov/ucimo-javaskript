@@ -1,0 +1,23 @@
+<div id="animation"></div>
+
+<style>
+#animation {
+    background-image: url(slike/sprite-jednorog.png);
+    background-repeat: no-repeat;
+    height: 102px;
+    width: 140px;
+}
+</style>
+
+<script>
+onload = function() {
+    let frejm = 1;
+    const ukupnoSlicica = 15;
+    const visinaSlicice = 102;
+    const element = document.getElementById("animation");
+    setInterval(() => {
+        const y = (++frejm % ukupnoSlicica) * -visinaSlicice;
+        element.style.backgroundPosition = "0px " + y + "px";
+    }, 100);
+}
+</script>
